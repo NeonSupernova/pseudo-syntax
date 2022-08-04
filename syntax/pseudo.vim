@@ -1,7 +1,7 @@
 if exists('b:current_syntax') | finish | endif
 
 syn keyword pseudoStatement     Function Procedure Class function func procedure class error nextgroup=pseudoFunction skipwhite
-syn keyword pseudoPrint         input Input output Output print Print
+syn keyword pseudoPrint         input Input output Output calc print Print
 syn match   pseudoFunction      "[a-zA-z][a-zA-Z0-9_]*" display contained
 syn keyword pseudoFunction      add sum length append remove pop size insert indexOf let
 syn keyword pseudoConditional   if else endif elif
