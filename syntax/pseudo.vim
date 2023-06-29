@@ -1,41 +1,47 @@
-if exists('b:current_syntax') | finish | endif
+if exists("b:current_syntax") | finish | endif
 
-syn keyword pseudoStatement     Function Procedure Class function func procedure class error nextgroup=pseudoFunction skipwhite
-syn keyword pseudoPrint         input Input output Output calc print Print
-syn match   pseudoFunction      "[a-zA-z][a-zA-Z0-9_]*" display contained
-syn keyword pseudoFunction      add sum length append remove pop size insert indexOf let
-syn keyword pseudoConditional   if else endif elif
-syn keyword pseudoRepeat        for to while foreach endfor endwhile endforeach return pass break each try catch
-syn keyword pseudoOperator      and in is not or do then to
-syn keyword pseudoBuiltIn       String List Int Float Double Array Long Dictionary Dict ArrayList string list int float double array long dictionary dict arraylist 
-syn keyword pseudoBoolean       True False true false
+" Define the pseudocode file type
+syn keyword pseudocodeType int float string boolean void
+syn keyword pseudocodeConditional if else elseif then endif
+syn keyword pseudocodeLoop for while do endfor endwhile
+syn keyword pseudocodeFunction def return
 
-syn region  pseudoString        start=+'+ skip=+\\\\\|\\'\|\\$+ excludenl end=+'+ end=+$+ keepend
-syn region  pseudoString        start=+"+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end=+$+ keepend
+" Highlight comments
+syn match pseudocodeComment "#.*"
 
-syn match   pseudoComment       '//.*$' display
+" Highlight numbers
+syn match pseudocodeNumber "\<\d\+\>"
 
-syn match   pseudoNumber        '\<\d\>' display
-syn match   pseudoNumber        '\<[1-9][_0-9]*\d\>' display
-syn match   pseudoNumber        '\<\d[jJ]\>' display
-syn match   pseudoNumber        '\<[1-9][_0-9]*\d[jJ]\>' display
+" Highlight keywords
+syn keyword pseudocodeKeyword
+  \ algorithm input output let
 
-syn match   pseudoFloat         '\.\d\%([_0-9]*\d\)\=\%([eE][+-]\=\d\%([_0-9]*\d\)\=\)\=[jJ]\=\>' display
-syn match   pseudoFloat         '\<\d\%([_0-9]*\d\)\=[eE][+-]\=\d\%([_0-9]*\d\)\=[jJ]\=\>' display
-syn match   pseudoFloat         '\<\d\%([_0-9]*\d\)\=\.\d\=\%([_0-9]*\d\)\=\%([eE][+-]\=\d\%([_0-9]*\d\)\=\)\=[jJ]\=' display
+" Highlight operators
+syn match pseudocodeOperator /[\+\-\*\/=\>\<!&|]\+/
 
-hi def link pseudoNumber        Number
-hi def link pseudoFloat         Float
-hi def link pseudoString        String
-hi def link pseudoStatement     Statement
-hi def link pseudoPrint         Special 
-hi def link pseudoFunction      Function
-hi def link pseudoConditional   Conditional
-hi def link pseudoRepeat        Repeat
-hi def link pseudoOperator      Operator
-hi def link pseudoBuiltIn       Type 
-hi def link pseudoString        String
-hi def link pseudoBoolean       Boolean
-hi def link pseudoComment       Comment
+" Highlight strings
+syn match pseudocodeString '".*"' contains=escChar,escLine
 
-let b:current_syntax = 'pseudo'
+" Highlight function names
+syn match pseudocodeFunctionName "\<[a-zA-Z_]\w*\>" contained
+
+" Highlight function calls
+syn match pseudocodeFunctionCall
+  \ "\<[a-zA-Z_]\w*\>"
+  \ contains=pseudocodeFunctionName,pseudocodeString
+
+" Define the syntax groups
+hi def link pseudocodeType Type
+hi def link pseudocodeConditional Conditional
+hi def link pseudocodeLoop Repeat
+hi def link pseudocodeFunction Function
+hi def link pseudocodeComment Comment
+hi def link pseudocodeNumber Number
+hi def link pseudocodeKeyword Keyword
+hi def link pseudocodeOperator Operator
+hi def link pseudocodeString String
+hi def link pseudocodeFunctionName Function
+hi def link pseudocodeFunctionCall Function
+
+" Set the default syntax highlighting for pseudocode
+let b:current_syntax = "pseudocode"
