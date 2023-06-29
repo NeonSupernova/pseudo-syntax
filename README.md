@@ -5,19 +5,19 @@ Syntax highlighting for various styles of pseudocode for vim
 With [vim-plug](https://github.com/junegunn/vim-plug)
 
 ```
-Plug 'joelbeedle/pseudo-syntax'
+Plug 'NeonSupernova/pseudo-syntax'
 ```
 
 With [Vundle](https://github.com/VundleVim/Vundle.vim)
 
 ```
-Plugin 'joelbeedle/pseudo-syntax'
+Plugin 'NeonSupernova/pseudo-syntax'
 ```
 
 With [dein](https://github.com/Shougo/dein.vim)
 
 ```
-call dein#add('joelbeedle/pseudo-syntax')
+call dein#add('NeonSupernova/pseudo-syntax')
 ```
 
 Or, stick ``` ftdetect ``` and ```syntax``` folders in your ```~/.vim/``` folder (will not update automatically)
@@ -27,7 +27,7 @@ Or, stick ``` ftdetect ``` and ```syntax``` folders in your ```~/.vim/``` folder
 Simply follow the install instructions above and start editing any file with the extension .pseudo
 
 # Example
-![image](https://github.com/joelbeedle/pseudo-syntax/blob/main/files/screenshot.jpeg)
+![image](https://github.com/NeonSupernova/pseudo-syntax/blob/main/files/screenshot.jpeg)
 
 # TODO
 - Add more syntax
